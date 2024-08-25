@@ -1,7 +1,7 @@
 # TaskReminderBot
 
 TaskReminderBot is a Python-based voice-controlled task reminder application. It allows users to add tasks and set reminders through voice commands, ensuring you never forget an important task again!
-
+## **Note:** This project is still in deployment. Some features may not work as expected, and further improvements are ongoing.
 ## Features
 
 - **Voice Recognition:** Add tasks and set reminders using simple voice commands.
@@ -29,3 +29,13 @@ TaskReminderBot is a Python-based voice-controlled task reminder application. It
 1. Clone the repository:
    ```bash
    git clone https://github.com/Lidorpahima/TaskSchedulerWithVoice.git
+   
+## Usage
+  Adding a Task: Speak "add" followed by your task. The application will recognize the command and store the task.
+  Setting a Reminder: After adding a task, specify the delay time in seconds.
+  Reminder Notification: When the time is up, the application will notify you with a sound.
+  Troubleshooting
+  If you encounter issues with sound playback, ensure that the pygame or playsound library is installed and that your audio file is in the correct format and location.
+
+## Contributing
+  Contributions are welcome! Please submit a pull request or open an issue to discuss your ideas.
