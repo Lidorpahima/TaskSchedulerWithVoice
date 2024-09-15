@@ -2,7 +2,6 @@ from TaskFunctions import add_task, remove_task
 from SpeechRecognition import get_audio
 from Reminder import remind_me
 from playsound import playsound
-#Still in Developing
 if __name__ == "__main__":
     while True:
         print("Say a command (add, remove, exit):")
