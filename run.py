@@ -1,34 +1,42 @@
-from TaskFunctions import add_task, remove_task
+from pip._internal import commands
+
+from TaskFunctions import add_task, remove_task, load_tasks
 from SpeechRecognition import get_audio
 from Reminder import remind_me
 from playsound import playsound
+from fuzzywuzzy import fuzz,process
 
 if __name__ == "__main__":
     while True:
-        print("Say a command (add, remove, exit):")
+        print("Say a command (insert, remove, exit, mytodo):")
         command = get_audio()
+        commands = ["insert", "remove", "exit" ,"my to do"]
+        best_match = process.extractOne(command, commands, scorer=fuzz.ratio)
+        if best_match[1] < 30:
+            print("Unknown command please try again...")
+            continue
+        commandDo = best_match[0]
+        rate = best_match[1]
+        print(commandDo,"and rate",rate)
+        if commandDo == "insert":
+            print("What task do you want to insert?")
+            task = get_audio()
+            add_task(task)
+            print(load_tasks())
+            #print("When do you want to be reminded?")
+            #delay = get_audio()
+            #remind_me(task, int(delay))
+            #print("Reminder set for", task, "in", delay, "seconds")
 
-        if command:
-            if "add" in command.lower() or "ad" in command.lower() or "ed" in command.lower() or \
-                    "at" in command.lower() or "aad" in command.lower() or "had" in command.lower() or \
-                    "and" in command.lower() or "ad" in command.lower() or "a d" in command.lower() or \
-                    "addd" in command.lower() or "adde" in command.lower():
-              if("add" in command.lower()):
-                task = command.replace("add", "").strip()
-                add_task(task)
-                remind_me(task, 10)
-                try:
-                    playsound('reminder_sound.wav') # This will play a sound when the reminder is triggered
-                except Exception as e:
-                    print(f"Failed to play sound: {e}")
 
-
-                try:
-                    task_number = int(command.replace("remove", "").strip())
-                    remove_task(task_number - 1)
-                except ValueError:
-                    print("Invalid number")
-            elif "exit" in command.lower():
-                break
-            else:
-                print("Unknown command ")
+        elif commandDo == "remove":
+            print("What task do you want to remove?")
+            task = get_audio()
+            remove_task(task)
+        elif commandDo == "exit":
+            print("Goodbye!")
+            break
+        elif commandDo == "my to do":
+            print(load_tasks())
+        else:
+            print("Unknown command please try again...")
