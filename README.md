@@ -1,41 +1,80 @@
-# TaskReminderBot
 
-TaskReminderBot is a Python-based voice-controlled task reminder application. It allows users to add tasks and set reminders through voice commands, ensuring you never forget an important task again!
-## **Note:** This project is still in deployment. Some features may not work as expected, and further improvements are ongoing.
-## Features
+</head>
+<body>
 
-- **Voice Recognition:** Add tasks and set reminders using simple voice commands.
-- **Customizable Reminders:** Specify the delay time, and get reminded with a sound notification.
-- **Threaded Execution:** Reminders are handled in separate threads to allow for multiple reminders simultaneously.
-- **Flexible Keyword Matching:** The application recognizes various pronunciations and minor errors in voice commands to ensure tasks are added accurately.
+<h1>Task Management System</h1>
 
-## How It Works
+<p>This is a simple voice-activated task management system. It allows users to add, remove, and display tasks using voice commands. The system also supports fuzzy matching to help recognize commands and task names even if they are not perfectly clear.</p>
 
-1. **Add a Task:** Simply say "add" followed by your task description, and the task will be stored.
-2. **Set a Reminder:** After adding a task, specify the delay (in seconds) for when you want to be reminded.
-3. **Reminder Notification:** When the time comes, the application will play a sound and display your task.
+<h2>Machine Learning Features</h2>
+<p>The system incorporates basic machine learning principles using the <strong>Levenshtein Distance</strong> algorithm through the <code>fuzzywuzzy</code> library to match user commands and task names. This allows the system to recognize commands and tasks even when they are not perfectly spoken or written, making the task management system more user-friendly and tolerant of small errors.</p>
 
-## Requirements
+<h2>Features</h2>
+<ul>
+    <li><strong>Add tasks</strong>: Users can add a task by speaking the task they want to add.</li>
+    <li><strong>Remove tasks</strong>: Users can remove tasks by saying the name of the task they want to delete. The system will find the closest match using fuzzy matching based on machine learning.</li>
+    <li><strong>View tasks</strong>: Users can view all their current tasks with each task displayed on a new line.</li>
+    <li><strong>Voice commands</strong>: The system uses Google Speech Recognition to listen to voice commands.</li>
+    <li><strong>Sound alerts</strong>: Plays a sound when a task is added or removed successfully.</li>
+</ul>
 
-- Python 3.x
-- Required Python libraries:
-  - `SpeechRecognition`
-  - `pyaudio`
-  - `pygame` or `playsound` (depending on your choice for sound playback)
-  - `threading` (part of the Python standard library)
+<h2>Voice Commands</h2>
+<p>The following voice commands are supported:</p>
+<ul>
+    <li><code>insert</code>: To add a new task.</li>
+    <li><code>remove</code>: To remove an existing task.</li>
+    <li><code>my to do</code>: To list all the current tasks.</li>
+    <li><code>exit</code>: To exit the application.</li>
+</ul>
 
-## Installation
+<h2>How It Works</h2>
+<ol>
+    <li><strong>Voice Recognition</strong>: The application listens for user commands through a microphone using <code>speech_recognition</code>.</li>
+    <li><strong>Task Management</strong>: Tasks are saved in a JSON file (<code>tasks.json</code>), and the user can add, remove, and display tasks.</li>
+    <li><strong>Fuzzy Matching with Machine Learning</strong>: <code>fuzzywuzzy</code> is used to match commands and task names, leveraging machine learning to handle small variations in input.</li>
+    <li><strong>Sound Feedback</strong>: The <code>playsound</code> module is used to play a notification sound when a task is added or removed.</li>
+</ol>
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Lidorpahima/TaskSchedulerWithVoice.git
-   
-## Usage
-  Adding a Task: Speak "add" followed by your task. The application will recognize the command and store the task.
-  Setting a Reminder: After adding a task, specify the delay time in seconds.
-  Reminder Notification: When the time is up, the application will notify you with a sound.
-  Troubleshooting
-  If you encounter issues with sound playback, ensure that the pygame or playsound library is installed and that your audio file is in the correct format and location.
+<h2>How to Run</h2>
+<pre>
+git clone https://github.com/your-username/task-management-system.git
+pip install -r requirements.txt
+python run.py
+</pre>
 
-## Contributing
-  Contributions are welcome! Please submit a pull request or open an issue to discuss your ideas.
+<h2>Dependencies</h2>
+<ul>
+    <li><code>speech_recognition</code>: To recognize voice commands.</li>
+    <li><code>fuzzywuzzy</code>: To match user input with possible commands and task names using machine learning.</li>
+    <li><code>playsound</code>: To play sound notifications.</li>
+    <li><code>pyaudio</code>: For capturing audio from the microphone.</li>
+</ul>
+
+<h2>File Structure</h2>
+<pre>
+.
+├── run.py                 # Main script to run the application
+├── TaskFunctions.py       # Task management functions (add, remove, load, save)
+├── SpeechRecognition.py   # Function for capturing audio
+├── Reminder.py            # Optional feature for setting reminders (in progress)
+├── tasks.json             # JSON file storing tasks
+├── word_number.txt        # Text file mapping words to numbers (for task removal)
+└── README.md              # This README file
+</pre>
+
+<h2>Future Improvements</h2>
+<ul>
+    <li><strong>Reminders</strong>: Implement the reminder functionality to notify users after a specified amount of time.</li>
+    <li><strong>Task Prioritization</strong>: Add task priority levels (low, medium, high).</li>
+    <li><strong>Multiple languages</strong>: Support for voice commands in multiple languages.</li>
+</ul>
+
+<h2>Output Example</h2>
+<p>Here is an example of the task management system in action:</p>
+<img src="https://i.ibb.co/yyw325F/Screenshot-2024-09-26-185825.png" alt="Task Management System Output">
+
+<h2>License and Collaboration</h2>
+<p>This project is open-source and open for collaboration. If you have ideas, improvements, or want to contribute, feel free to create pull requests or contact me. All contributions are welcome!</p>
+
+</body>
+</html>
