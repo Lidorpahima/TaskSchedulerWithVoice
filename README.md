@@ -1,4 +1,4 @@
-# TaskReminderBot
+# TaskReminderBot -Still in development
 
 TaskReminderBot is a Python-based voice-controlled task reminder application. It allows users to add tasks and set reminders through voice commands, ensuring you never forget an important task again!
 ## **Note:** This project is still in deployment. Some features may not work as expected, and further improvements are ongoing.
